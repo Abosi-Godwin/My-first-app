@@ -31,13 +31,14 @@ onValue(creamsInDb, function(snapshot){
   }
       
   } else {
-    shoppingListEl.innerHTML ="No items here... yet";
+    shoppingListEl.innerHTML ="No item added yet";
   }
   
   
 })
 
 onValue(boughtItems, function(snapshot) {
+  if (snapshot.exists()) {
   let items = Object.values(snapshot.val());
   
   boughtItemsEl.innerHTML = "";
@@ -51,6 +52,12 @@ onValue(boughtItems, function(snapshot) {
    
   }
   
+  } else {
+    boughtItemsEl.innerHTML = "Nothing bought yet..."
+  }
+  
+  
+
   
 })
 submitBtn.addEventListener('click', () => {
